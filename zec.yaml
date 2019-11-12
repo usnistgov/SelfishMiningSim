@@ -1,0 +1,5 @@
+navginterval: 17
+nmediantimespan: 11
+nmaxadjustup: 16
+nmaxadjustdown: 32
+npowdampeningfactor: 4
