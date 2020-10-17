@@ -6,9 +6,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//Should these be included in the new "difficultyParmaters"?
-const BASElINE_DIFFICULTY = 1.0
-const STARTING_BLOCKS = 3000
+//baselineDifficulty- Should these be included in the new "difficultyParmaters"?
+const baselineDifficulty = 1.0
+
+//startingBlocks - Should these be included in the new "difficultyParmaters"?
+const startingBlocks = 3000
 
 //Block holds information on a block: its height, difficulty and timestamp
 type Block struct {
@@ -78,9 +80,7 @@ type Blockchainer interface {
 	setDiffAlgo(Difficulty)
 }
 
-//Perhaps blockchain struct should only hold data for 1 chain (therefore
-// the simulation will hold 2 - one for public one for private
-
+// Blockchain - Perhaps blockchain struct should only hold data for 1 chain (therefore the simulation will hold 2 - one for public one for private
 type Blockchain struct {
 	chain                 []Block
 	privateBranch         []Block
@@ -99,13 +99,13 @@ type Blockchain struct {
 //Init initializes a blockchain with 150 blocks all with normal difficulty and time.
 func (blockchain *Blockchain) Init() {
 	blockchain.height = -1 //Set to -1 since we are about to add genesis (0)
-	for i := 0; i < STARTING_BLOCKS; i++ {
+	for i := 0; i < startingBlocks; i++ {
 		blockchain.pushToChain(Block{
-			i, BASElINE_DIFFICULTY, i * blockchain.expectedBlockTime, true})
+			i, baselineDifficulty, i * blockchain.expectedBlockTime, true})
 	}
 	blockchain.forkHeight = 0
-	blockchain.nextDifficulty = BASElINE_DIFFICULTY
-	blockchain.nextPrivateDifficulty = BASElINE_DIFFICULTY
+	blockchain.nextDifficulty = baselineDifficulty
+	blockchain.nextPrivateDifficulty = baselineDifficulty
 	//blockchain.chainType = unassigned
 }
 
@@ -128,7 +128,7 @@ func (blockchain *Blockchain) Reset() {
 func (blockchain *Blockchain) stats() (sm, total int, winRatio float64) {
 	hm := 0
 	sm = 0
-	for _, block := range blockchain.chain[STARTING_BLOCKS:] {
+	for _, block := range blockchain.chain[startingBlocks:] {
 		if block.isHonest {
 			hm++
 		} else {

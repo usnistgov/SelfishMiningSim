@@ -1,0 +1,45 @@
+[
+	{
+		"daa": "zec",
+		"difficulty_parameters": {
+			"navginterval": 17,
+			"nmediantimespan": 11,
+			"nmaxadjustup": 16,
+			"nmaxadjustdown": 32,
+			"NPOWDampeningFactor": 4
+		},
+		"results": null
+	}
+,{
+	"daa": "zec",
+	"difficulty_parameters": {
+		"navginterval": 17,
+		"nmediantimespan": 11,
+		"nmaxadjustup": 16,
+		"nmaxadjustdown": 32,
+		"NPOWDampeningFactor": 4
+	},
+	"results": [
+		{
+			"numsims": 30,
+			"alpha": 0.06,
+			"gamma": 0,
+			"timewarp": 0,
+			"numblocks": 10000,
+			"blocktime": 150,
+			"winratio": 0.010435586781920355,
+			"adjustedwinning": 0.010377003668668014,
+			"selfishsecondsperblock": 14715.945878395745,
+			"relativegain": -0.8260735536346607,
+			"adjustedrelativegain": -0.8270499388555331,
+			"gainstddev": 0.022578596442587393,
+			"adjustedgainsteddev": 0.02249577171415436,
+			"secondsperblockstddev": 2035.6607830386986,
+			"finalheight": 13000.033333333333,
+			"numreorgs": 547.2666666666667,
+			"smwinreorgs": 0.058823085970149944,
+			"didbetternaive": 0,
+			"didbettertimeadjust": 0
+		}
+	]
+}]
