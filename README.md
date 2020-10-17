@@ -8,6 +8,10 @@ For questions please contact either Tyler Diamond (tyler.diamond@nist.gov) or Mi
 
 ## Running code and Usage ##
 
+Get the required modules
+
+> go get .
+
 Install the **selfishmining** module
 
 > go install selfishmining
