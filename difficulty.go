@@ -6,9 +6,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//DifficultyAlgorithm is the calculateDifficulty() function
-//type DifficultyAlgorithm func(bool, Blockchain) float64
-
+//Difficulty - DifficultyAlgorithm is the calculateDifficulty() function type DifficultyAlgorithm func(bool, Blockchain) float64
 type Difficulty interface {
 	getDiff(bool, Blockchain) float64
 	//Parse(data []byte) error
@@ -117,7 +115,7 @@ func (b btcDifficulty) getDiff(isPrivate bool, blockchain Blockchain) float64 {
 	}
 	chainLen := len(chain)
 
-	if (chainLen-STARTING_BLOCKS)%b.Period != 0 {
+	if (chainLen-startingBlocks)%b.Period != 0 {
 		return chain[chainLen-1].difficulty
 	}
 	top := chain[chainLen-1]

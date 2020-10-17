@@ -93,7 +93,7 @@ func (sim *Simulation) init(alpha float64, gamma float64, blocks, timewarp int, 
 	sim.realTime = sim.blockchain.time
 	rand.Seed(uint64(time.Now().UnixNano()))
 	randsrc = rand.NewSource(uint64(time.Now().UTC().UnixNano()))
-	sim.startTime = STARTING_BLOCKS * expectedBlockTime
+	sim.startTime = startingBlocks * expectedBlockTime
 	sim.ID = id
 }
 
@@ -177,7 +177,7 @@ func (sim *Simulation) getDelays() (delayHonest, delaySelfish int) {
 
 func (sim *Simulation) runSimulation(resultChannel chan<- SimulationResult) {
 	var res SimulationResult
-	for (sim.blockchain.height < STARTING_BLOCKS+sim.numSimBlocks) || (len(sim.blockchain.privateBranch) != 0) {
+	for (sim.blockchain.height < startingBlocks+sim.numSimBlocks) || (len(sim.blockchain.privateBranch) != 0) {
 		//No private branch, both mining at the same tip
 		privHeight := 0
 		if len(sim.blockchain.privateBranch) > 0 {
@@ -263,7 +263,7 @@ func (sim *Simulation) runSimulation(resultChannel chan<- SimulationResult) {
 
 	sm, _, winRatio := sim.blockchain.stats()
 	elapsedTime := sim.realTime - sim.startTime
-	timeRatio := float64(elapsedTime) / float64((sim.blockchain.height-STARTING_BLOCKS)*sim.expectedBlockTime)
+	timeRatio := float64(elapsedTime) / float64((sim.blockchain.height-startingBlocks)*sim.expectedBlockTime)
 	res.WinRatio = winRatio
 	res.AdjustedWinning = winRatio / timeRatio
 	res.RelativeGain = (winRatio - sim.alpha) / sim.alpha
